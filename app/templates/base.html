@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    {% from 'bootstrap5/form.html' import render_field %}
+	<head>
+        <link rel="icon" type="image/x-icon" href="/static/book-skull-solid.svg">
+        <script src="{{url_for('static', filename='755811f5a4.js')}}" crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='jquery-3.7.0.min.js')}}"></script>
+        <script src="{{url_for('static', filename='insert_templates.js')}}"></script>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+        {% endblock %}
+        
+        <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+
+        {{ toastr.include_jquery() }}
+        {{ toastr.include_toastr_css() }}
+        {{ toastr.message() }}
+        
+	</head>
+	<body>
+        {% block scripts %}
+        {{ toastr.include_toastr_js() }}
+        {{ bootstrap.load_js() }}
+        
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+
+	</body>
+</html>

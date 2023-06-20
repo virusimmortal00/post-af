@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}post-af{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+<nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
+	<div class="container-fluid">
+	  <a class="navbar-brand" href="#"><i class="fa-solid fa-book-skull"></i> post-af</a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarColor03">
+		<ul class="navbar-nav me-auto">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">project</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">github</a>
+				<a class="dropdown-item" href="#">docker</a>
+				<a class="dropdown-item" href="https://dev.appsflyer.com/hc/reference/api-reference-overview">af docs</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="https://www.linkedin.com/in/bobby-sayers/">Bobby Sayers</a>
+			</div>
+			</li>
+		  <li class="nav-item">
+			<a class="nav-link active" href="/">s2s
+			  <span class="visually-hidden">(current)</span>
+			</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">event</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">about</a>
+		  </li>
+
+		</ul>
+	  </div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class ="row mt-2">
+		<div class="col-7 gx-8">
+			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm">
+				{{ form.csrf_token }}
+				{{ form.hidden_tag() }}
+				<div class="row justify-content-between">
+					<div class="col-sm-4 gx-8" >
+						{{ render_field(form.api_dev_key, value='9uGa48E7MubBXdWigP6j3Y', class='form-control-sm') }}
+					</div>
+					<div class="col-sm-4 gx-8" >
+						{{ render_field(form.api_app_id, class='form-control-sm') }}
+					</div>
+					<div class="col-sm-2 gx-8">
+						{{ render_field(form.submit, button_style='primary') }}							
+					</div>
+				</div>
+				<div class="row">
+					<div class="col gx-8 h-auto">
+						{{ render_field(form.api_body, class='form-control form-control-sm', rows="13", id='myTextarea') }}
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-4 gx-8">
+						<span class="badge bg-success"><i class="fa-brands fa-android"></i></span>
+						<button id="install_button" type="button" class="btn btn-dark btn-sm">install</button>
+						<button id="event_button" type="button" class="btn btn-dark btn-sm">event</button>
+					</div>
+					<div class="col-4 gx-8">
+						<span class="badge bg-secondary"><i class="fa-brands fa-apple"></i></span>
+						<button id="install_button" type="button" class="btn btn-dark btn-sm">install</button>
+						<button id="event_button" type="button" class="btn btn-dark btn-sm">event</button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+		<div class="col-5 gx-8">
+			<table class="table table-hover table-sm gx-8">
+				<thead class="text-center text-muted">
+					<td>utc</td>
+					<td>code</td>
+					<td>msg</td>
+				</thead>
+				{% for row in rows %}
+					<tr class="text-center">
+						
+						<td><sub>{{row["post_date"]}}</sub></td>
+
+						<small>
+
+						{% if row["code"] == '200' %}
+							<td class="text-success">
+						{% else %}
+							<td class="text-danger">
+						{% endif %}
+						{{row["code"]}}
+						</td>
+						
+						<td>{{row["reason"]}}</td>
+						</small>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
