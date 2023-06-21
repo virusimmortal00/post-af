@@ -39,18 +39,7 @@
 <h3 align="center">post-af</h3>
 
   <p align="center">
-    S2S API calls to AppsFlyer made easy.
-    <br />
-    <a href="https://github.com/virusimmortal00/post-af"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <!--
-    <a href="https://github.com/virusimmortal00/post-af">View Demo</a>
-    ·
-    <a href="https://github.com/virusimmortal00/post-af/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
--->
+  AppsFlyer S2S API calls made sinfully simple.
   </p>
 </div>
 
@@ -89,6 +78,8 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
+Docker image with built-in web server/app/ui for sending API messages to AppsFlyer S2S endpoints.  All of the more prickly parts of manually generating these API calls (generally for test purposes) have been purposefully and elegantly obfuscated for your POSTing pleasure.  
+
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -97,14 +88,13 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+https://github.com/tiangolo/uwsgi-nginx-flask-docker
+https://github.com/pallets/flask/
+https://github.com/helloflask/bootstrap-flask
+https://github.com/wtforms/flask-wtf/
+https://github.com/wiltonsr/Flask-Toastr/tree/master
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -118,23 +108,30 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+This project was designed for use as an image/container, deployed most likely via Docker - although you could certainly use any suitable alternative.  For the sake of simplicity, the directions below are for Docker.
 
+You can get Docker desktop here:
+https://docs.docker.com/get-docker/
+
+or, using Brew (or your preferred package managed) via terminal:
+
+  ```sh
+  brew install docker
+  ```
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Once Docker is installed, pull the image from Docker hub:
+
+  ```sh
+    docker pull virusimmortal00/post-af:v1
+    ```
+
+2. Launch the container 'post-af' from the image on port 80
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   docker run -d --name post-af -p 80:80 virusimmortal00/post-af:v1
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
+3. Open your browser and enter 'localhost' as the destination
+
 4. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
@@ -231,7 +228,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: hhttps://www.linkedin.com/in/bobby-sayers/
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -248,4 +245,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[JQuery-url]: https://jquery.com
+
+
+
