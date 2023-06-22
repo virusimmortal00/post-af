@@ -7,11 +7,11 @@ from flask_wtf import FlaskForm
 import hmac
 import hashlib
 import json
+import jsonschema
 import requests
 import sqlite3
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms import DecimalField, RadioField, SelectField, TextAreaField, FileField
-from wtforms.validators import InputRequired
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import InputRequired, ValidationError
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -23,29 +23,101 @@ app.config['TOASTR_POSITION_CLASS'] = 'toast-top-center'
 app.config['TOASTR_TIMEOUT'] = '1500'
 #app.static_folder = 'static'
 
+afschema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "s2s schema",
+    "type": "object",
+    "properties": {
+      "att": {
+        "type": "number"
+      },
+      "ua": {
+        "type": "string"
+      },
+      "uid": {
+        "type": "string"
+      },
+      "lang": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "string"
+      },
+      "inst_date": {
+        "type": "string"
+      },
+      "os": {
+        "type": "string"
+      },
+      "ip": {
+        "type": "string"
+      },
+      "idfa": {
+        "type": "string"
+      },
+      "idfv": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "counter": {
+        "type": "number"
+      },
+      "aie": {
+        "type": "boolean"
+      },
+      "event_currency": {
+        "type": "string"
+      },
+      "event_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+        "timestamp",
+        "ip",
+        "lang",
+        "ua",
+        "os",
+        "type",
+        "counter",
+        "uid",
+        "aie",
+        "inst_date",
+        "att"
+    ]
+  }
+
+
+        
 class MyForm(FlaskForm):
 
     api_dev_key = StringField('dev key:', validators=[InputRequired()])
-    api_endpoint = StringField('api:', validators=[InputRequired()])
-    #event = TextAreaField('event:', validators=[InputRequired()])
+    #api_endpoint = StringField('api:', validators=[InputRequired()])
     api_app_id= StringField('app id:', validators=[InputRequired()])
     api_body = TextAreaField('body:', validators=[InputRequired()])
     submit = SubmitField()
 
+    def validate_api_body(self,schema):
+        try:
+            t = json.loads(self.api_body.data.strip())
+            ValidationError(jsonschema.validate(instance=t, schema=afschema))
+        except jsonschema.ValidationError as e:
+            raise ValidationError('Error in message body: ' + e.message)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = MyForm()
-    #if form.validate_on_submit():
-    #create_db_table()
-    # value='9uGa48E7MubBXdWigP6j3Y'
-    
+
     con = sqlite3.connect("database.db")
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("select * from posts order by post_date desc")
     rows = cur.fetchall()
 
-    if request.method == 'POST':
+    #if request.method == 'POST':
+    if form.validate_on_submit():
         secret_key = form.api_dev_key.data
         #secret_keyb = b"9uGa48E7MubBXdWigP6j3Y"
         
@@ -108,6 +180,7 @@ def index():
         con.close()
 
         return render_template('index.html', form=form, rows=rows)
+    
     return render_template('index.html', form=form, rows=rows)
 
 if __name__ == '__main__':
@@ -132,4 +205,7 @@ if __name__ == '__main__':
         "event_name": "af_purchase",
         "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
     }
+
+    AC9FB4FB-AAAA-BBBB-88E6-2840D9BB17F4
+
 """

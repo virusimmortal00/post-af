@@ -18,3 +18,83 @@ https://s2s.appsflyer.com/v2.0/id641654987?af_sig=b012f850970817347591bbaed8690d
     "event_name": "af_purchase",
     "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
 }
+
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+      "att": {
+        "type": "number"
+      },
+      "ua": {
+        "type": "string"
+      },
+      "uid": {
+        "type": "string"
+      },
+      "lang": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": "string"
+      },
+      "inst_date": {
+        "type": "string"
+      },
+      "os": {
+        "type": "string"
+      },
+      "ip": {
+        "type": "string"
+      },
+      "idfa": {
+        "type": "string"
+      },
+      "idfv": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "counter": {
+        "type": "number"
+      },
+      "aie": {
+        "type": "boolean"
+      },
+      "event_currency": {
+        "type": "string"
+      },
+      "event_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+        "timestamp",
+        "ip",
+        "lang",
+        "ua",
+        "os",
+        "type",
+        "counter",
+        "uid",
+        "aie",
+        "inst_date",
+        "att"
+    ]
+  }
+
+ 
+  "idfa",
+  "idfv",
+  "event_currency",
+  "event_name",
+  "event_value"
+
+  {
+    0 = not determined 
+1 = restricted
+2 = denied
+3 = authorized
+  }
