@@ -11,9 +11,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![Docker][docker-shield]][docker-url]
-[![Flask][flask-shield]][flask-url]
+
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)][docker-url]
+[![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)][flask-url]
+[![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)][Bootstrap-url]
+![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 
 
 <!-- PROJECT LOGO -->
@@ -67,11 +69,7 @@
 
 Docker image with built-in web server/app/ui for sending API messages to AppsFlyer S2S endpoints.  All of the more prickly parts of manually generating these API calls (for test purposes) have been purposefully black boxed for your POSTing pleasure.  
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -100,7 +98,7 @@ or, using Brew (or your preferred package managed) via terminal:
 
 ### Prerequisites
 
-You're going to need a general working knowledge of how the AppsFlyer S2S API works, an HQ active account, and at least one app configured (you'll need your API dev key and app ID)
+You're going to need a general working knowledge of how the AppsFlyer S2S API works, an HQ active account, and at least one app configured (you'll need your API dev key and app ID).
 
 ### Installation
 
@@ -114,12 +112,11 @@ You're going to need a general working knowledge of how the AppsFlyer S2S API wo
    ```sh
    docker run -d --name post-af -p 80:80 virusimmortal00/post-af:v1
    ```
-3. Open your browser and enter 'localhost' as the destination
+3. Open your browser and enter 'localhost' as the destination.
 
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+4. From here, things should be self explanatory - enter your dev key and app id, then either paste in your own JSON message body or use one of the provided template buttons to get started.
+
+5. Profit.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,8 +133,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- CONTACT -->
 ## Contact
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)][gmail-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-Bobby Sayers - rsayers88@gmail.com
 
 Project Link: https://github.com/virusimmortal00/post-af
 
@@ -150,14 +148,12 @@ Project Link: https://github.com/virusimmortal00/post-af
 
 [product-screenshot]: images/post-af_screen1.png
 
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
 
-[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
-[docker-url]: https://hub.docker.com/r/virusimmortal00/post-af
-[Flask]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
-[flask-url]: https://github.com/pallets/flask/
 
+[docker-url]: https://hub.docker.com/r/virusimmortal00/post-af
+[flask-url]: https://github.com/pallets/flask/
+[gmail-url]: http://mailto:rsayers88@gmail.com
