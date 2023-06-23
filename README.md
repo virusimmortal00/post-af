@@ -93,6 +93,7 @@ https://github.com/pallets/flask/
 https://github.com/helloflask/bootstrap-flask
 https://github.com/wtforms/flask-wtf/
 https://github.com/wiltonsr/Flask-Toastr/tree/master
+https://github.com/python-jsonschema/jsonschema/tree/main
 
 
 

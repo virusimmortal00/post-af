@@ -23,8 +23,8 @@ $(document).ready(function(){
         "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1",
         "uid": "1850557D-3F50-417C-84EC-B8CB832320B0",
         "lang": "en-US",
-        "timestamp": "2023-18-06T00:20:01.502",
-        "inst_date": "2023-18-06T00:16:01.502",
+        "timestamp": "2023-06-18T00:20:01.502",
+        "inst_date": "2023-06-18T00:16:01.502",
         "os": "15.6.1",
         "ip": "96.250.1.168",
         "idfa": "1850557D-3F50-417C-84EC-B8CB832320B0",   
@@ -40,6 +40,22 @@ $(document).ready(function(){
     $("#install_button").click(function(){
         $("#myTextarea").val(installTemplate);
     });
-});
 
-// animate__shakeX
+/*
+    $("#mainSubmitButton").click(function(){
+        // Let's call it 2 times just for fun...
+        $("#mainSubmit").LoadingOverlay("show", {
+            background  : "rgba(165, 190, 100, 0.5)"
+        });
+
+        // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:
+        $("#mainSubmit").LoadingOverlay("hide", true);
+    });
+
+*/
+
+    
+
+
+
+});

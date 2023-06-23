@@ -29,7 +29,9 @@ afschema = {
     "type": "object",
     "properties": {
       "att": {
-        "type": "number"
+        "type": "number",
+        "minimum": 0,
+        "maximum": 3
       },
       "ua": {
         "type": "string"
@@ -41,34 +43,41 @@ afschema = {
         "type": "string"
       },
       "timestamp": {
-        "type": "string"
+        "type": "string",
+        "format":"date-time"
       },
       "inst_date": {
-        "type": "string"
+        "type": "string",
+        "format":"date-time"
       },
       "os": {
         "type": "string"
       },
       "ip": {
-        "type": "string"
+        "type": "string",
+        "format":"ipv4"
       },
       "idfa": {
-        "type": "string"
+        "type": "string",
+        "format": "uuid"
       },
       "idfv": {
-        "type": "string"
+        "type": "string",
+        "format": "uuid"
       },
       "type": {
         "type": "string"
       },
       "counter": {
-        "type": "number"
+        "type": "number",
+         "minimum": 1
       },
       "aie": {
         "type": "boolean"
       },
       "event_currency": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 3
       },
       "event_name": {
         "type": "string"
@@ -100,11 +109,21 @@ class MyForm(FlaskForm):
     submit = SubmitField()
 
     def validate_api_body(self,schema):
-        try:
-            t = json.loads(self.api_body.data.strip())
-            ValidationError(jsonschema.validate(instance=t, schema=afschema))
-        except jsonschema.ValidationError as e:
-            raise ValidationError('Error in message body: ' + e.message)
+        def validateJSON(jsonData):
+          try:
+              json.loads(jsonData)
+          except ValueError as err:
+              return False
+          return True
+      
+        if validateJSON(self.api_body.data):
+          try:
+              t = json.loads(self.api_body.data.strip())
+              ValidationError(jsonschema.validate(instance=t, schema=afschema,format_checker=jsonschema.FormatChecker()))
+          except jsonschema.ValidationError as e:
+              raise ValidationError('Error in message body: ' + e.message)
+        else:
+            raise ValidationError('Invalid JSON syntax/formatting')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -113,7 +132,7 @@ def index():
     con = sqlite3.connect("database.db")
     con.row_factory = sqlite3.Row
     cur = con.cursor()
-    cur.execute("select * from posts order by post_date desc")
+    cur.execute("select * from posts order by post_date desc limit 10")
     rows = cur.fetchall()
 
     #if request.method == 'POST':
@@ -175,7 +194,7 @@ def index():
         con = sqlite3.connect("database.db")
         con.row_factory = sqlite3.Row
         cur = con.cursor()
-        cur.execute("select * from posts order by post_date desc")
+        cur.execute("select * from posts order by post_date desc limit 10")
         rows = cur.fetchall()
         con.close()
 
