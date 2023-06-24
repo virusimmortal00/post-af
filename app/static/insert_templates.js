@@ -1,5 +1,16 @@
 $(document).ready(function(){
-    var eventTemplate_ios = `{
+
+
+    function GetUserIP(){
+        var ret_ip;
+        $.ajaxSetup({async: false});
+        $.get('http://jsonip.com/', function(r){ 
+            ret_ip = r.ip; 
+        });
+        return ret_ip;
+    }
+
+    var eventTemplate_ios = {
         "att": 3,
         "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1",
         "uid": "1850557D-3F50-417C-84EC-B8CB832320B0",
@@ -16,9 +27,9 @@ $(document).ready(function(){
         "event_currency": "USD",
         "event_name": "af_purchase",
         "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
-    }`;
+    };
 
-    var eventTemplate_android = `{
+    var eventTemplate_android = {
         "ua": "Mozilla/5.0 (Linux; Android 11; RMX2193 Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/112.0.5615.101 Mobile Safari/537.36",
         "uid": "861ec5db-4798-44e8-8516-35e6ece358ed",
         "lang": "en-US",
@@ -33,9 +44,9 @@ $(document).ready(function(){
         "event_currency": "USD",
         "event_name": "af_purchase",
         "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
-    }`;
+    };
 
-    var installTemplate_ios = `{
+    var installTemplate_ios = {
         "att": 3,
         "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1",
         "uid": "1850557D-3F50-417C-84EC-B8CB832320B0",
@@ -49,9 +60,9 @@ $(document).ready(function(){
         "type": "iPhone",
         "counter": 1,
         "aie": true
-        }`;
+        };
 
-        var installTemplate_android = `{
+        var installTemplate_android = {
             "ua": "Mozilla/5.0 (Linux; Android 11; RMX2193 Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/112.0.5615.101 Mobile Safari/537.36",
             "uid": "861ec5db-4798-44e8-8516-35e6ece358ed",
             "lang": "en-US",
@@ -63,20 +74,36 @@ $(document).ready(function(){
             "type": "SM-S901U",
             "counter": 1,
             "aie": true
-        }`;
+        };
+
+    var now = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
+    var yesterday = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
+
+    eventTemplate_ios["ip"] = GetUserIP();
+    installTemplate_android["ip"] = GetUserIP();
+    eventTemplate_android["ip"] = GetUserIP();
+    installTemplate_ios["ip"] = GetUserIP();
 
     $("#event_button_ios").click(function(){
-        $("#myTextarea").val(eventTemplate_ios);
+        eventTemplate_ios["timestamp"] = now;
+        eventTemplate_ios["inst_date"] = yesterday;
+        $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 2));
     });
     $("#install_button_ios").click(function(){
-        $("#myTextarea").val(installTemplate_ios);
+        installTemplate_ios["timestamp"] = now;
+        installTemplate_ios["inst_date"] = now;
+        $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 2));
     });
 
     $("#event_button_android").click(function(){
-        $("#myTextarea").val(eventTemplate_android);
+        eventTemplate_android["timestamp"] = now;
+        eventTemplate_android["inst_date"] = yesterday;
+        $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 2));
     });
     $("#install_button_android").click(function(){
-        $("#myTextarea").val(installTemplate_android);
+        installTemplate_android["timestamp"] = now;
+        installTemplate_android["inst_date"] = now;
+        $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 2));
     });
 
 /*
