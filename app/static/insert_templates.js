@@ -76,33 +76,30 @@ $(document).ready(function(){
             "aie": true
         };
 
-    var now = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
-    var yesterday = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
-
     eventTemplate_ios["ip"] = GetUserIP();
     installTemplate_android["ip"] = GetUserIP();
     eventTemplate_android["ip"] = GetUserIP();
     installTemplate_ios["ip"] = GetUserIP();
 
     $("#event_button_ios").click(function(){
-        eventTemplate_ios["timestamp"] = now;
-        eventTemplate_ios["inst_date"] = yesterday;
+        eventTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
+        eventTemplate_ios["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 2));
     });
     $("#install_button_ios").click(function(){
-        installTemplate_ios["timestamp"] = now;
-        installTemplate_ios["inst_date"] = now;
+        installTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
+        installTemplate_ios["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 2));
     });
 
     $("#event_button_android").click(function(){
-        eventTemplate_android["timestamp"] = now;
-        eventTemplate_android["inst_date"] = yesterday;
+        eventTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
+        eventTemplate_android["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 2));
     });
     $("#install_button_android").click(function(){
-        installTemplate_android["timestamp"] = now;
-        installTemplate_android["inst_date"] = now;
+        installTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
+        installTemplate_android["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 2));
     });
 
