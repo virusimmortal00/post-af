@@ -2,11 +2,13 @@
 <html>
     {% from 'bootstrap5/form.html' import render_field %}
 	<head>
-        <link rel="icon" type="image/x-icon" href="/static/book-skull-solid.svg">
-        <script src="{{url_for('static', filename='755811f5a4.js')}}" crossorigin="anonymous"></script>
-        <script src="{{url_for('static', filename='jquery-3.7.0.min.js')}}"></script>
-        <script src="{{url_for('static', filename='insert_templates.js')}}"></script>
-        <script src="{{url_for('static', filename='moment.js')}}"></script>
+        <link rel="icon" type= "image/x-icon" href= "{{ url_for('static',filename='book-skull-solid.svg') }}">
+        <script src="{{url_for('static', filename='js/755811f5a4.js')}}" crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/insert_templates.js')}}"></script>
+        <script src="{{url_for('static', filename='js/moment.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery-ui.min.js')}}"></script>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/jquery-ui.min.css') }}">
         {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8">
