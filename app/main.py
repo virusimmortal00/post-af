@@ -93,8 +93,7 @@ afschema = {
         "counter",
         "uid",
         "aie",
-        "inst_date",
-        "att"
+        "inst_date"
     ]
   }
 

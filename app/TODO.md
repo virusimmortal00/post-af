@@ -6,3 +6,4 @@ TODO
 - setup git / github - X
 - setup docker hosting? - X
 - finish documentation
+- if ATT not consent, idfa 0000

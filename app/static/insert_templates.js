@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var eventTemplate = `{
+    var eventTemplate_ios = `{
         "att": 3,
         "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1",
         "uid": "1850557D-3F50-417C-84EC-B8CB832320B0",
@@ -18,7 +18,24 @@ $(document).ready(function(){
         "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
     }`;
 
-    var installTemplate = `{
+    var eventTemplate_android = `{
+        "ua": "Mozilla/5.0 (Linux; Android 11; RMX2193 Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/112.0.5615.101 Mobile Safari/537.36",
+        "uid": "861ec5db-4798-44e8-8516-35e6ece358ed",
+        "lang": "en-US",
+        "timestamp": "2023-06-18T00:20:01.502",
+        "inst_date": "2023-06-18T00:16:01.502",
+        "os": "11",
+        "ip": "96.250.1.168",
+        "advertising_id":"861ec5db-4798-44e8-8516-35e6ece358ed",
+        "type": "SM-S901U",
+        "counter": 4,
+        "aie": true,
+        "event_currency": "USD",
+        "event_name": "af_purchase",
+        "event_value": {"af_revenue" : 19.99, "af_currency": "USD", "af_quantity": 1, "af_content_type" : "shirt"}
+    }`;
+
+    var installTemplate_ios = `{
         "att": 3,
         "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1",
         "uid": "1850557D-3F50-417C-84EC-B8CB832320B0",
@@ -34,11 +51,32 @@ $(document).ready(function(){
         "aie": true
         }`;
 
-    $("#event_button").click(function(){
-        $("#myTextarea").val(eventTemplate);
+        var installTemplate_android = `{
+            "ua": "Mozilla/5.0 (Linux; Android 11; RMX2193 Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/112.0.5615.101 Mobile Safari/537.36",
+            "uid": "861ec5db-4798-44e8-8516-35e6ece358ed",
+            "lang": "en-US",
+            "timestamp": "2023-06-18T00:20:01.502",
+            "inst_date": "2023-06-18T00:16:01.502",
+            "os": "11",
+            "ip": "96.250.1.168",
+            "advertising_id":"861ec5db-4798-44e8-8516-35e6ece358ed",
+            "type": "SM-S901U",
+            "counter": 1,
+            "aie": true
+        }`;
+
+    $("#event_button_ios").click(function(){
+        $("#myTextarea").val(eventTemplate_ios);
     });
-    $("#install_button").click(function(){
-        $("#myTextarea").val(installTemplate);
+    $("#install_button_ios").click(function(){
+        $("#myTextarea").val(installTemplate_ios);
+    });
+
+    $("#event_button_android").click(function(){
+        $("#myTextarea").val(eventTemplate_android);
+    });
+    $("#install_button_android").click(function(){
+        $("#myTextarea").val(installTemplate_android);
     });
 
 /*
@@ -53,9 +91,5 @@ $(document).ready(function(){
     });
 
 */
-
-    
-
-
-
 });
+
