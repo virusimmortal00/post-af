@@ -72,14 +72,17 @@ Docker image with built-in web server/app/ui for sending API messages to AppsFly
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-
+images:
 https://github.com/tiangolo/uwsgi-nginx-flask-docker
+flask:
 https://github.com/pallets/flask/
 https://github.com/helloflask/bootstrap-flask
 https://github.com/wtforms/flask-wtf/
 https://github.com/wiltonsr/Flask-Toastr/tree/master
+js:
 https://github.com/python-jsonschema/jsonschema/tree/main
 https://github.com/moment/moment
+https://github.com/gasparesganga/jquery-loading-overlay
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

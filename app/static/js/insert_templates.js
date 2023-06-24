@@ -81,12 +81,16 @@ $(document).ready(function(){
         eventTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_ios["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 2));
+        $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
+        $( "#myTextarea").focus().scrollTop(0);
     });
     $("#install_button_ios").click(function(){
         installTemplate_ios["ip"] = GetUserIP();
         installTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_ios["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 2));
+        $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
+        $( "#myTextarea").focus().scrollTop(0);
     });
 
     $("#event_button_android").click(function(){
@@ -94,25 +98,29 @@ $(document).ready(function(){
         eventTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_android["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 2));
+        $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
+        $( "#myTextarea").focus().scrollTop(0);
     });
     $("#install_button_android").click(function(){
         installTemplate_android["ip"] = GetUserIP();
         installTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_android["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 2));
+        $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
+        $( "#myTextarea").focus().scrollTop(0);
     });
 
-/*
+
     $("#mainSubmitButton").click(function(){
         // Let's call it 2 times just for fun...
-        $("#mainSubmit").LoadingOverlay("show", {
-            background  : "rgba(165, 190, 100, 0.5)"
+        $("#myTextarea").LoadingOverlay("show", {
+            background  : "rgba(248, 245, 240, 0.5)"
         });
-
+        $("#mainSubmitButton").addClass("disabled")
         // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:
-        $("#mainSubmit").LoadingOverlay("hide", true);
+        $("#myTextarea").LoadingOverlay("hide", true);
     });
 
-*/
+
 });
 
