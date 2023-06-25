@@ -54,33 +54,42 @@
 			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm">
 				{{ form.csrf_token }}
 				{{ form.hidden_tag() }}
-				<div class="row justify-content-between">
-					<div class="col-sm-4 gx-8" >
+				<div class="row"> 
+					
+					<div class="col-sm-5 gx-8" >
 						{{ render_field(form.api_dev_key, class='form-control-sm') }}
 					</div>
 					<div class="col-sm-4 gx-8" >
 						{{ render_field(form.api_app_id, class='form-control-sm') }}
 					</div>
-					<div class="col-sm-2 gx-8">
-						{{ render_field(form.submit, button_style='primary', id='mainSubmitButton') }}							
+					<div class="col-sm-3 gx-8"> <!-- d-flex flex-row -->
+						<div class ="d-flex flex-row-reverse">
+							<button class="btn btn-light btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><i class="fa-solid fa-circle-info"></i></button>
+						</div>
 					</div>
+
 				</div>
 				<div class="row">
 					<div class="col gx-8 h-auto">
 						{{ render_field(form.api_body, class='form-control form-control-sm', rows="13", id='myTextarea') }}
 					</div>
 				</div>
-				<div class="row justify-content-center">
+				<div class="row justify-content-center align-items-center py-2">
 					<div class="col-4 gx-8">
-						<span class="badge bg-success"><i class="fa-brands fa-android"></i></span>
+						<i class="fa-brands fa-android fa-xl pe-2"></i>
 						<button id="install_button_android" type="button" class="btn btn-dark btn-sm">install</button>
 						<button id="event_button_android" type="button" class="btn btn-dark btn-sm">event</button>
 					</div>
 					<div class="col-4 gx-8">
-						<span class="badge bg-secondary"><i class="fa-brands fa-apple"></i></span>
+						<i class="fa-brands fa-apple fa-xl pe-2"></i>
 						<button id="install_button_ios" type="button" class="btn btn-dark btn-sm">install</button>
 						<button id="event_button_ios" type="button" class="btn btn-dark btn-sm">event</button>
 					</div>
+					<div class="col-sm-4 gx-8 d-flex flex-row-reverse">
+						<!-- -->
+						{{ render_field(form.submit, button_style='success', id='mainSubmitButton', class='btn-lg') }}							
+					</div>
+					
 				</div>
 				
 			</form>
@@ -114,5 +123,27 @@
 			</table>
 		</div>
 	</div>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}

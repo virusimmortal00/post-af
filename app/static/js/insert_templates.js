@@ -114,7 +114,7 @@ $(document).ready(function(){
     $("#mainSubmitButton").click(function(){
         // Let's call it 2 times just for fun...
         $("#myTextarea").LoadingOverlay("show", {
-            background  : "rgba(248, 245, 240, 0.5)"
+            background  : "rgba(248, 245, 240, 0.5)",
         });
         $("#mainSubmitButton").addClass("disabled")
         // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:
