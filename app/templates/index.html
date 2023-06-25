@@ -4,6 +4,15 @@
   {{ super() }}
   <style type="text/css">
     .important { color: #336699; }
+
+	html, body {
+		height: 100%;
+		margin: 0;
+	}
+	.full-height {
+		height: 100%;
+	}
+
   </style>
 {% endblock %}
 {% block content %}
@@ -48,7 +57,7 @@
 		</div>
 	</div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid full-height">
 	<div class ="row mt-2">
 		<div class="col-7 gx-8">
 			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm">
