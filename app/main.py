@@ -21,6 +21,7 @@ app.config['SECRET_KEY'] = 'secretkey'
 app.config['BOOTSTRAP_BOOTSWATCH_THEME'] = 'sandstone'
 app.config['TOASTR_POSITION_CLASS'] = 'toast-top-center'
 app.config['TOASTR_TIMEOUT'] = '1500'
+app.config['BOOTSTRAP_FORM_GROUP_CLASSES'] = 'w-100 d-flex flex-column'
 #app.static_folder = 'static'
 
 afschema = {

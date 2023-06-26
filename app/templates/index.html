@@ -6,66 +6,73 @@
     .important { color: #336699; }
 
 	html, body {
-		height: 100%;
+		height: 92%;
 		margin: 0;
 	}
 	.full-height {
 		height: 100%;
 	}
-
+	textarea { 
+		height: 98%;
+		width: 98%;
+		resize: none; 
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    	box-sizing: border-box;         /* Opera/IE 8+ */
+	}
   </style>
 {% endblock %}
 {% block content %}
-<nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
-	<div class="container-fluid">
-	  	<a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
-	  	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-	  	</button>
-	  	<div class="collapse navbar-collapse" id="navbarColor03">
-			<ul class="navbar-nav me-auto">
-				<!--
-				
-				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">project</a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">github</a>
-					<a class="dropdown-item" href="#">docker</a>
-					<a class="dropdown-item" href="https://dev.appsflyer.com/hc/reference/api-reference-overview">af docs</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="https://www.linkedin.com/in/bobby-sayers/">Bobby Sayers</a>
-				</div>
-				</li>
-				
-				<li class="nav-item">
-					<a class="nav-link active" href="/">s2s
-					<span class="visually-hidden">(current)</span>
-					</a>
-				</li>
-				-->
-				
-				<li class="nav-item">
-					<a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github"></i></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker"></i></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
+
 <div class="container-fluid full-height">
-	<div class ="row mt-2">
-		<div class="col-7 gx-8">
-			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm">
+	<nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
+		<div class="container-fluid">
+			  <a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarColor03">
+				<ul class="navbar-nav me-auto">
+					<!--
+					
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">project</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">github</a>
+						<a class="dropdown-item" href="#">docker</a>
+						<a class="dropdown-item" href="https://dev.appsflyer.com/hc/reference/api-reference-overview">af docs</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="https://www.linkedin.com/in/bobby-sayers/">Bobby Sayers</a>
+					</div>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link active" href="/">s2s
+						<span class="visually-hidden">(current)</span>
+						</a>
+					</li>
+					-->
+					
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class ="d-flex flex-row mt-2 justify-content-center full-height">
+		<div class="col-7 gx-8 px-2">
+			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm h-100 d-flex justify-content-between flex-column">
 				{{ form.csrf_token }}
 				{{ form.hidden_tag() }}
-				<div class="row"> 
-					
-					<div class="col-sm-5 gx-8" >
+				<div class="d-flex flex-row"> 
+					<div class="col-sm-5 gx-8 me-2" >
 						{{ render_field(form.api_dev_key, class='form-control-sm') }}
 					</div>
 					<div class="col-sm-4 gx-8" >
@@ -76,14 +83,11 @@
 							<button class="btn btn-light btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><i class="fa-solid fa-circle-info"></i></button>
 						</div>
 					</div>
-
 				</div>
-				<div class="row">
-					<div class="col gx-8 h-auto">
-						{{ render_field(form.api_body, class='form-control form-control-sm', rows="13", id='myTextarea') }}
-					</div>
+				<div class="d-flex flex-row full-height w-100 mt-1">
+					{{ render_field(form.api_body, class='form-control form-control-sm', id='myTextarea') }}
 				</div>
-				<div class="row justify-content-center align-items-center py-2">
+				<div class="d-flex flex-row py-3">
 					<div class="col-4 gx-8">
 						<i class="fa-brands fa-android fa-xl pe-2"></i>
 						<button id="install_button_android" type="button" class="btn btn-dark btn-sm">install</button>
@@ -94,7 +98,7 @@
 						<button id="install_button_ios" type="button" class="btn btn-dark btn-sm">install</button>
 						<button id="event_button_ios" type="button" class="btn btn-dark btn-sm">event</button>
 					</div>
-					<div class="col-sm-4 gx-8 d-flex flex-row-reverse">
+					<div class="d-flex flex-row-reverse col-sm-4 gx-8">
 						<!-- -->
 						{{ render_field(form.submit, button_style='success', id='mainSubmitButton', class='btn-lg') }}							
 					</div>
@@ -103,7 +107,7 @@
 				
 			</form>
 		</div>
-		<div class="col-5 gx-8">
+		<div class="col-5 gx-8 px-2 h-100 d-inline-block">
 			<table class="table table-hover table-sm gx-8">
 				<thead class="text-center text-muted">
 					<td>utc</td>
