@@ -22,13 +22,16 @@
 <br />
 <div align="center">
   <a href="https://github.com/virusimmortal00/post-af">
+  <kbd>
     <img src="app/static/book-skull-solid.svg" alt="Logo" width="80" height="80">
+  </kbd>
+    
   </a>
 
 <h3 align="center">post-af</h3>
 
   <p align="center">
-  AppsFlyer S2S API calls magically easy.
+  All-in-one test tool for easily generating and sending AppsFlyer S2S API messages.
   </p>
 </div>
 
@@ -65,9 +68,17 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Product Name Screen Shot][product-screenshot]
 
-Docker image with built-in web server/app/ui for sending API messages to AppsFlyer S2S endpoints.  All of the more prickly parts of manually generating these API calls (for test purposes) have been purposefully black boxed for your POSTing pleasure.  
+Post-af is a Python/Flask web app packaged within a Docker image alongside NGINX and uWSGI, allowing for a simple 'turn-key' self-hosted testing tool [within its own web server] for the AppsFlyer S2S API.  
+
+All pre-requisites and configurations needed in order for this tool to get up and running are already set and included within the image, allowing for fast and straight forward deployments.
+
+Although the source code has been provided within this repo, most users will only need the pre-built Docker image, hosted on Docker Hub:
+
+https://hub.docker.com/r/virusimmortal00/post-af
+
+If you're unfamiliar with Docker and/or the link above, fear not, as directions are provided below.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,8 +93,11 @@ https://github.com/python-jsonschema/jsonschema/tree/main <br />
 https://github.com/moment/moment <br />
 https://github.com/gasparesganga/jquery-loading-overlay <br />
 https://github.com/wenzhixin/bootstrap-table <br />
-misc: <br />
+back-end: <br />
 https://github.com/tiangolo/uwsgi-nginx-flask-docker <br />
+https://www.nginx.com/ <br />
+https://uwsgi-docs.readthedocs.io/en/latest/ <br /> 
+etc: <br />
 https://github.com/FortAwesome/Font-Awesome <br />
 
 
@@ -92,12 +106,14 @@ https://github.com/FortAwesome/Font-Awesome <br />
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project was designed for use as an image/container, deployed most likely via Docker - although you could certainly use any suitable alternative.  For the sake of simplicity, the directions below are for Docker.
+This project was designed for use mainly as a grab+go image/container, deployed via Docker.
+
+Docker can be deployed either via Docker Desktop [easiest] or through a standalone Docker Engine instance (if you have this, you likely don't need these directions).
 
 You can get Docker desktop here:
 https://docs.docker.com/get-docker/
 
-or, using Brew (or your preferred package managed) via terminal:
+or install Docker using your favorite package manager via terminal.  For this example, we'll use Homebrew for macOS:
 
   ```sh
   brew install docker
@@ -105,21 +121,29 @@ or, using Brew (or your preferred package managed) via terminal:
 
 ### Prerequisites
 
-You're going to need a general working knowledge of how the AppsFlyer S2S API works, an HQ active account, and at least one app configured (you'll need your API dev key and app ID).
+Beyond Docker - you're going to need a general working knowledge of how the AppsFlyer S2S API works (as these docs are not provided here), an active account at AppsFlyer HQ, and at least one app configured (as you'll need your API dev key and app ID).  Luckily, you won't need to know much about Docker, once the container is running the system is plug and play from your local browser.
 
 ### Installation
 
-1. Once Docker is installed, open your terminal and pull the image from Docker hub:
+1. After Docker is installed, open your terminal and pull the image from Docker hub:
 
-  ```sh
-    docker pull virusimmortal00/post-af:v1
-  ```
+```sh
+  docker pull virusimmortal00/post-af:v1
+```
 
-2. Launch the container 'post-af' from the image on port 80
-   ```sh
+Alternatively, if using Docker Desktop, you can configure the container through the UI:
+
+![Docker Desktop Screen Shot][dd-screenshot]
+
+2. Run the container 'post-af' on port 80 (default HTTP) from the image you just pulled:
+
+```sh
    docker run -d --name post-af -p 80:80 virusimmortal00/post-af:v1
-   ```
-3. Open your browser and enter 'localhost' as the destination.
+```
+
+3. Open your browser and enter 'localhost' as the destination:
+
+![localhost screenshot][localhost-screenshot]
 
 4. From here, things should be self explanatory - enter your dev key and app id, then either paste in your own JSON message body or use one of the provided template buttons to get started.
 
@@ -132,9 +156,34 @@ You're going to need a general working knowledge of how the AppsFlyer S2S API wo
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### JSON Body Validation
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Inserting Templates
+Template installs/events for both iOS and Android are available via buttons at the bottom of the screen:
+
+![Template Screen Shot][template-screenshot]
+
+Timestamps are generated dynamically on click in order to keep the data relevant, as installs/events have a limited window for acceptable submission.  
+
+For installs, the current time in UTC is used for both timestamp and inst_date:
+```json
+{
+  "timestamp": "2023-06-27T16:31:21.857",
+  "inst_date": "2023-06-27T16:31:21.857",
+}
+```
+For events, the current time in UTC is used for the event, with the install timestamp set -15 hours before, to simulate a realistic install to event timeframe:
+```json
+{
+  "timestamp": "2023-06-27T16:31:21.857",
+  "inst_date": "2023-06-27T01:31:21.858",
+}
+```
+Additionally, just for the sake of data traceability, the IP provided in the template comes from the IP of your workstation running the tool.
+
+All templates, once inserted, can be manually configured before posting - so feel free to adjust these as needed.
+
+## POST History
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -153,7 +202,10 @@ Project Link: https://github.com/virusimmortal00/post-af
 [linkedin-shield]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: hhttps://www.linkedin.com/in/bobby-sayers/
 
-[product-screenshot]: images/post-af_screen1.png
+[product-screenshot]: images/main_screen.png
+[template-screenshot]: images/templates.png
+[localhost-screenshot]: images/localhost_screen.png
+[dd-screenshot]: images/dockerdesktop.png
 
 [Bootstrap-url]: https://getbootstrap.com
 
