@@ -102,7 +102,7 @@ afschema = {
         
 class MyForm(FlaskForm):
 
-    api_dev_key = StringField('dev key:', validators=[InputRequired()])
+    api_dev_key = StringField('dev key: ', validators=[InputRequired()])
     #api_endpoint = StringField('api:', validators=[InputRequired()])
     api_app_id= StringField('app id:', validators=[InputRequired()])
     api_body = TextAreaField('body:', validators=[InputRequired()])

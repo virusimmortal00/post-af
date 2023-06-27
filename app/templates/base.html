@@ -5,8 +5,8 @@
 	<head>
         <link rel="icon" type= "image/x-icon" href= "{{ url_for('static',filename='book-skull-solid.svg') }}">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/jquery-ui.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap-table.min.css') }}">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/custom.css') }}">
-        <link rel= "stylesheet" href="https://unpkg.com/bootstrap-table@1.22.0/dist/bootstrap-table.min.css">
         {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -28,6 +28,7 @@
 	<body>
         {% block scripts %}
         {{ toastr.include_toastr_js() }}
+        <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
         {{ bootstrap.load_js() }}
         <script src="{{url_for('static', filename='js/jquery-3.7.0.min.js')}}"></script>
         <script src="{{url_for('static', filename='js/jquery-ui.js')}}"></script>
