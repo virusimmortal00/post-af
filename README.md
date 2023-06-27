@@ -113,7 +113,9 @@ Docker can be deployed either via Docker Desktop [easiest] or through a standalo
 You can get Docker desktop here:
 https://docs.docker.com/get-docker/
 
-or install Docker using your favorite package manager via terminal.  For this example, we'll use Homebrew for macOS:
+or install Docker using your favorite package manager via terminal.  
+
+For this example, we'll use Homebrew for macOS:
 
   ```sh
   brew install docker
@@ -121,19 +123,19 @@ or install Docker using your favorite package manager via terminal.  For this ex
 
 ### Prerequisites
 
-Beyond Docker - you're going to need a general working knowledge of how the AppsFlyer S2S API works (as these docs are not provided here), an active account at AppsFlyer HQ, and at least one app configured (as you'll need your API dev key and app ID).  Luckily, you won't need to know much about Docker, once the container is running the system is plug and play from your local browser.
+Beyond Docker - you're going to need a general working knowledge of how the AppsFlyer S2S API works (as these docs are not provided here), an active account at AppsFlyer HQ, and at least one app configured (as you'll need your API dev key and app ID).  
+
+Luckily, you won't need to know much about Docker, once the container is running, the system is plug and play from your local browser.
 
 ### Installation
+
+_Note: The below steps use the terminal for setup, rather than the Docker Desktop UI.  Although I feel the terminal approach is a little more foolproof, you can certainly use the UI instead to the same end result - just map port 80 to 80 and you're all set config-wise._
 
 1. After Docker is installed, open your terminal and pull the image from Docker hub:
 
 ```sh
   docker pull virusimmortal00/post-af:v1
 ```
-
-Alternatively, if using Docker Desktop, you can configure the container through the UI:
-
-![Docker Desktop Screen Shot][dd-screenshot]
 
 2. Run the container 'post-af' on port 80 (default HTTP) from the image you just pulled:
 
@@ -145,13 +147,11 @@ Alternatively, if using Docker Desktop, you can configure the container through 
 
 ![localhost screenshot][localhost-screenshot]
 
-4. From here, things should be self explanatory - enter your dev key and app id, then either paste in your own JSON message body or use one of the provided template buttons to get started.
+4. From here, you're all set to begin posting API messages - just enter your dev key and app id, then either paste in your own JSON message body or use one of the provided template buttons.  As you post your calls, you'll see the response onscreen through both a short notification and also on the right hand side in the <a href="#post-history">post history area</a>.
 
-5. Profit.
+5. The next section below covers the finer details around the apps functionality.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -184,6 +184,8 @@ Additionally, just for the sake of data traceability, the IP provided in the tem
 All templates, once inserted, can be manually configured before posting - so feel free to adjust these as needed.
 
 ## POST History
+<a name="post-history"></a>
+![history screenshot][history-screenshot]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,6 +208,7 @@ Project Link: https://github.com/virusimmortal00/post-af
 [template-screenshot]: images/templates.png
 [localhost-screenshot]: images/localhost_screen.png
 [dd-screenshot]: images/dockerdesktop.png
+[history-screenshot]: images/history.png
 
 [Bootstrap-url]: https://getbootstrap.com
 
