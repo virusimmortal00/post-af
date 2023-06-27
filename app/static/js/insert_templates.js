@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
     function GetUserIP(){
         var ret_ip;
         $.ajaxSetup({async: false});
@@ -112,15 +111,26 @@ $(document).ready(function(){
 
 
     $("#mainSubmitButton").click(function(){
-        // Let's call it 2 times just for fun...
         $("#myTextarea").LoadingOverlay("show", {
             background  : "rgba(248, 245, 240, 0.5)",
         });
-        $("#mainSubmitButton").addClass("disabled")
-        // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:
         $("#myTextarea").LoadingOverlay("hide", true);
     });
 
-
+    var loadingData = true;
+    $('#table').bootstrapTable({   
+        formatLoadingMessage: function () {
+            loadingData = true;
+            return '';
+        },
+        formatNoMatches: function () {
+            if (loadingData){
+                loadingData = false;
+                return 'No history found - are you new here?';
+            }else{
+                return 'No data found.';
+            }
+        },
+    });
 });
 

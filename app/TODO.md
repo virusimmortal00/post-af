@@ -1,9 +1,5 @@
 TODO
-- fix unlimited table - C - limit 10
-- add android/ios versions
-- check for actual json in body / validaions - X
-- body update effects
-- setup git / github - X
-- setup docker hosting? - X
-- finish documentation
+- fix unlimited table - C - limit 10=
+- check for actual devkey + etc
+- finish documentation - for dockerhub
 - if ATT not consent, idfa 0000

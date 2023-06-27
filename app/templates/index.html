@@ -4,22 +4,6 @@
   {{ super() }}
   <style type="text/css">
     .important { color: #336699; }
-
-	html, body {
-		height: 92%;
-		margin: 0;
-	}
-	.full-height {
-		height: 100%;
-	}
-	textarea { 
-		height: 98%;
-		width: 98%;
-		resize: none; 
-		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    	box-sizing: border-box;         /* Opera/IE 8+ */
-	}
   </style>
 {% endblock %}
 {% block content %}
@@ -27,42 +11,24 @@
 <div class="container-fluid full-height">
 	<nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
 		<div class="container-fluid">
-			  <a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
-			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
-			  </button>
-			  <div class="collapse navbar-collapse" id="navbarColor03">
-				<ul class="navbar-nav me-auto">
-					<!--
-					
-					<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">project</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">github</a>
-						<a class="dropdown-item" href="#">docker</a>
-						<a class="dropdown-item" href="https://dev.appsflyer.com/hc/reference/api-reference-overview">af docs</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="https://www.linkedin.com/in/bobby-sayers/">Bobby Sayers</a>
-					</div>
-					</li>
-					
-					<li class="nav-item">
-						<a class="nav-link active" href="/">s2s
-						<span class="visually-hidden">(current)</span>
-						</a>
-					</li>
-					-->
-					
-					<li class="nav-item">
-						<a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker"></i></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-					</li>
-				</ul>
+			</button>
+			<div class="collapse navbar-collapse flex-row-reverse" id="navbarColor03">
+				<form class="d-flex">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+						</li>
+					</ul>
+				  </form>
 			</div>
 		</div>
 	</nav>
@@ -80,7 +46,7 @@
 					</div>
 					<div class="col-sm-3 gx-8"> <!-- d-flex flex-row -->
 						<div class ="d-flex flex-row-reverse">
-							<button class="btn btn-light btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><i class="fa-solid fa-circle-info"></i></button>
+							<button class="btn btn-light btn-sm me-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><i class="fa-solid fa-circle-question"></i></button>
 						</div>
 					</div>
 				</div>
@@ -100,7 +66,7 @@
 					</div>
 					<div class="d-flex flex-row-reverse col-sm-4 gx-8">
 						<!-- -->
-						{{ render_field(form.submit, button_style='success', id='mainSubmitButton', class='btn-lg') }}							
+						{{ render_field(form.submit, button_style='success', id='mainSubmitButton', class='btn-lg', value="POST!") }}							
 					</div>
 					
 				</div>
@@ -108,19 +74,29 @@
 			</form>
 		</div>
 		<div class="col-5 gx-8 px-2 h-100 d-inline-block">
-			<table class="table table-hover table-sm gx-8">
+			<table class="table table-hover table-sm gx-8" 
+				id="table"
+				data-toggle="table"
+				data-sortable="true"
+				data-pagination="true"
+				data-locale="en-US"
+				data-sort-name="post_date"
+				data-sort-order="desc"
+				data-pagination-parts="['pageList']"
+				data-pagination-h-align="left"
+				>
+				
 				<thead class="text-center text-muted">
-					<td>utc</td>
-					<td>code</td>
-					<td>msg</td>
+					<tr>
+						<th data-sortable="true" data-field="post_date">utc</th>
+						<th data-field="code">code</th>
+						<th data-field="reason">msg</th>
+					</tr>
 				</thead>
 				{% for row in rows %}
 					<tr class="text-center">
-						
 						<td><sub>{{row["post_date"]}}</sub></td>
-
 						<small>
-
 						{% if row["code"] == '200' %}
 							<td class="text-success">
 						{% else %}
@@ -138,24 +114,14 @@
 	</div>
 </div>
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">post-af</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+      This is where i'll put info about the app.
     </div>
   </div>
 </div>

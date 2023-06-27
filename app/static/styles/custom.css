@@ -1,0 +1,20 @@
+html, body {
+    height: 92%;
+    margin: 0;
+}
+.full-height {
+    height: 100%;
+}
+textarea { 
+    height: 98%;
+    width: 98%;
+    resize: none; 
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.no-records-found{
+    color: #8e8c84;
+    font-size: .75em;
+}

@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <html>
     {% from 'bootstrap5/form.html' import render_field %}
 	<head>
         <link rel="icon" type= "image/x-icon" href= "{{ url_for('static',filename='book-skull-solid.svg') }}">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/jquery-ui.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/custom.css') }}">
+        <link rel= "stylesheet" href="https://unpkg.com/bootstrap-table@1.22.0/dist/bootstrap-table.min.css">
         {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -32,6 +35,13 @@
         <script src="{{url_for('static', filename='js/moment.js')}}"></script>
         <script src="{{url_for('static', filename='js/loadingoverlay.min.js')}}"></script>
         <script src="{{url_for('static', filename='js/insert_templates.js')}}"></script>
+        
+        <!-- Latest compiled and minified CSS -->
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://unpkg.com/bootstrap-table@1.22.0/dist/bootstrap-table.min.js"></script>
+        <!-- Latest compiled and minified Locales -->
+        <script src="https://unpkg.com/bootstrap-table@1.22.0/dist/locale/bootstrap-table-zh-CN.min.js"></script>
         {% endblock %}
 
         {% block content %}{% endblock %}
