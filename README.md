@@ -30,7 +30,6 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#demo-environment">Demo Environment</a></li>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
@@ -40,6 +39,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
+        <li><a href="#demo-environment">Demo Environemnt</a></li>
+        <li><a href="#docker-instructions">Docker Instructions</a></li>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
@@ -50,21 +51,10 @@
         <li><a href="#inserting-templates">Inserting Templates</a></li>
         <li><a href="#post-history">POST History</a></li>
       </ul>
+    <li><a href="#disclaimer">Disclaimer</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
-## Demo Environment
-
-For the sake of convenience, I'm currently hosting a demo version of this app at:
-
-https://postaf.sayers.io/
-
-Although there are limitation within the demo in regards to post history (as the database wasn't designed for multiple users, and therefore all data history is visible to any uers), it's still fully functional for sending API posts.
-
-Perhaps in the future there will be no need to locally host your own containers, but for now, that's the best route.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -109,7 +99,19 @@ https://github.com/FortAwesome/Font-Awesome <br />
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project was designed for use mainly as a grab+go image/container, deployed via Docker.
+### Demo Environment
+
+This project was designed for use mainly as a grab+go image/container, deployed via Docker.  For some, the idea of injecting Docker into their lives might be a bit much - so, for the sake of convenience, I'm also currently hosting a demo version of the app at:
+
+https://postaf.sayers.io/
+
+Although there are limitations within the demo in regards to post history (as the database wasn't designed for multiple users, and so it would be unwise for everyone's data to be visible to anyone), it's still fully functional for sending API posts.
+
+Perhaps in the future there will be no need to locally host your own container, but for now, that's the best route.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Docker Instructions
 
 Docker can be deployed either via Docker Desktop [easiest] or through a standalone Docker Engine instance (if you have this, you likely don't need these directions).
 
@@ -173,6 +175,12 @@ _Note: The below steps use the terminal for setup, rather than the Docker Deskto
 
 ### JSON Body Validation
 
+For those already intimately familiar with the AppsFlyer S2S endpoint, you'll know that it can be fairly _forgiving_ when it comes to accepting data... therefore - I've taken steps to validate your json body (based on my own re-created schema) before throwing it over to the S2S endpoint (ultimately saving you time).
+
+If you run into any issues where you have legitimate data that's being rejected, please let me know.
+
+I hope to continue adding better and smarter validation rules here as time goes on... we'll see!
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Inserting Templates
@@ -207,7 +215,19 @@ All templates, once inserted, can be manually configured before posting - so fee
 
 ## POST History
 
+<div align="center">
+  <img src="images/history.png" alt="templates" width="50%">
+</div>
+
+On the right side of the app you'll see your POST history, pulled from a local sqlite db created when the container is first created.  As long as you don't delete this container, your history will be saved and will continue to be accesible.
+
+I've toyed with the idea of adding an option to save out your history to local file - but haven't quite become convinced its worth it - so for now, your history lives and dies with your container.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Disclaimer
+
+Although I do work at AppsFlyer, this app has not been commissioned, endorsed, or approved by AF in any way - it was a labor of love born out of my own downtime.  Maybe one day that will change, but for now - disclaimer has been disclaimed :)
 
 <!-- CONTACT -->
 ## Contact
