@@ -86,7 +86,6 @@ https://github.com/python-jsonschema/jsonschema/tree/main <br />
 https://github.com/moment/moment <br />
 https://github.com/gasparesganga/jquery-loading-overlay <br />
 https://github.com/wenzhixin/bootstrap-table <br />
-https://github.com/jquery-validation/jquery-validation <br />
 back-end: <br />
 https://github.com/tiangolo/uwsgi-nginx-flask-docker <br />
 https://www.nginx.com/ <br />
