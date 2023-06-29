@@ -178,7 +178,7 @@ def index():
         
         con = sqlite3.connect("database.db")
         cur = con.cursor()
-
+        
         #(code TEXT,reason TEXT, date TEXT, url_string TEXT, payload_dict TEXT, headers TEXT)
 
         if r.status_code == 200:
@@ -186,7 +186,15 @@ def index():
         else:
              flash(str(r.status_code) + ' ' + str(r.text), 'error')
         
-        cur.execute("INSERT INTO posts (code,reason,post_date,url_string,payload,headers) VALUES (?,?,?,?,?,?)",(str(r.status_code),str(r.text),post_date,url_string,str(payload),str(headers) ))
+        print(str(payload_dict["counter"]))
+
+        if str(payload_dict["counter"]) == '1':
+            payload_type = 'install'
+        else:
+            payload_type = 'event'
+
+
+        cur.execute("INSERT INTO posts (code,reason,post_date,app_id,url_string,payload,headers,payload_type) VALUES (?,?,?,?,?,?,?,?)",(str(r.status_code),str(r.text),post_date,str(form.api_app_id.data),url_string,str(payload),str(headers),payload_type ))
 
         con.commit()
         con.close()

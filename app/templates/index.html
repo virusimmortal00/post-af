@@ -33,7 +33,7 @@
 		</div>
 	</nav>
 	<div class ="d-flex flex-row mt-2 justify-content-center full-height">
-		<div class="col-7 gx-8 px-2">
+		<div class="col-6 gx-8 px-2">
 			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm h-100 d-flex justify-content-between flex-column">
 				{{ form.csrf_token }}
 				{{ form.hidden_tag() }}
@@ -73,7 +73,7 @@
 				
 			</form>
 		</div>
-		<div class="col-5 gx-8 px-2 h-100 d-inline-block">
+		<div class="col-6 gx-8 px-2 h-100 d-inline-block">
 			<table class="table table-hover table-sm gx-8" 
 				id="table"
 				data-toggle="table"
@@ -91,11 +91,14 @@
 						<th data-sortable="true" data-field="post_date">utc</th>
 						<th data-field="code">code</th>
 						<th data-field="reason">msg</th>
+						<th data-field="app_id">app</th>
+						<th data-field="payload_type">type</th>
 					</tr>
 				</thead>
 				{% for row in rows %}
 					<tr class="text-center">
 						<td><sub>{{row["post_date"]}}</sub></td>
+
 						<small>
 						{% if row["code"] == '200' %}
 							<td class="text-success">
@@ -104,8 +107,9 @@
 						{% endif %}
 						{{row["code"]}}
 						</td>
-						
 						<td>{{row["reason"]}}</td>
+						<td><sub>{{row["app_id"]}}</sub></td>
+						<td><sub>{{row["payload_type"]}}</sub></td>
 						</small>
 					</tr>
 				{% endfor %}
@@ -136,4 +140,29 @@
     </div>
   </div>
 </div>
+
+<!--
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+	Launch static backdrop modal
+  </button>
+  
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  ...
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary">Understood</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+-->
+
 {% endblock %}
