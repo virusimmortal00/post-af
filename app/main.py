@@ -8,10 +8,11 @@ import hmac
 import hashlib
 import json
 import jsonschema
+import re
 import requests
 import sqlite3
 from wtforms import StringField, SubmitField, TextAreaField
-from wtforms.validators import InputRequired, ValidationError
+from wtforms.validators import InputRequired, ValidationError, Regexp
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -102,9 +103,9 @@ afschema = {
         
 class MyForm(FlaskForm):
 
-    api_dev_key = StringField('dev key: ', validators=[InputRequired()])
+    api_dev_key = StringField('dev key: ', validators=[InputRequired(),Regexp("^[A-Za-z0-9]{22}$",message="Invalid dev key syntax.")])
     #api_endpoint = StringField('api:', validators=[InputRequired()])
-    api_app_id= StringField('app id:', validators=[InputRequired()])
+    api_app_id= StringField('app id:', validators=[InputRequired(),Regexp("^id[0-9]{9}$|com\.",message="Invalid app id syntax.")])
     api_body = TextAreaField('body:', validators=[InputRequired()])
     submit = SubmitField()
 
@@ -124,6 +125,7 @@ class MyForm(FlaskForm):
               raise ValidationError('Error in message body: ' + e.message)
         else:
             raise ValidationError('Invalid JSON syntax/formatting')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -185,8 +187,6 @@ def index():
             flash(str(r.status_code) + ' ' + str(r.text), 'success')
         else:
              flash(str(r.status_code) + ' ' + str(r.text), 'error')
-        
-        print(str(payload_dict["counter"]))
 
         if str(payload_dict["counter"]) == '1':
             payload_type = 'install'

@@ -17,7 +17,7 @@ $(document).ready(function(){
         "timestamp": "2023-06-18T00:20:01.502",
         "inst_date": "2023-06-18T00:16:01.502",
         "os": "15.6.1",
-        "ip": "96.250.1.168",
+        "ip": "11.22.33.44",
         "idfa": "1850557D-3F50-417C-84EC-B8CB832320B0",   
         "idfv": "18506666-3F50-417C-84EC-B8CB83236666",
         "type": "iPhone",
@@ -35,7 +35,7 @@ $(document).ready(function(){
         "timestamp": "2023-06-18T00:20:01.502",
         "inst_date": "2023-06-18T00:16:01.502",
         "os": "11",
-        "ip": "96.250.1.168",
+        "ip": "11.22.33.44",
         "advertising_id":"861ec5db-4798-44e8-8516-35e6ece358ed",
         "type": "SM-S901U",
         "counter": 4,
@@ -53,7 +53,7 @@ $(document).ready(function(){
         "timestamp": "2023-06-18T00:20:01.502",
         "inst_date": "2023-06-18T00:16:01.502",
         "os": "15.6.1",
-        "ip": "96.250.1.168",
+        "ip": "11.22.33.44",
         "idfa": "1850557D-3F50-417C-84EC-B8CB832320B0",   
         "idfv": "18506666-3F50-417C-84EC-B8CB83236666",
         "type": "iPhone",
@@ -68,7 +68,7 @@ $(document).ready(function(){
             "timestamp": "2023-06-18T00:20:01.502",
             "inst_date": "2023-06-18T00:16:01.502",
             "os": "11",
-            "ip": "96.250.1.168",
+            "ip": "11.22.33.44",
             "advertising_id":"861ec5db-4798-44e8-8516-35e6ece358ed",
             "type": "SM-S901U",
             "counter": 1,
@@ -76,7 +76,10 @@ $(document).ready(function(){
         };
 
     $("#event_button_ios").click(function(){
-        eventTemplate_ios["ip"] = GetUserIP();
+        if (GetUserIP())
+        {
+            eventTemplate_ios["ip"] = GetUserIP();
+        }
         eventTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_ios["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 2));
@@ -84,7 +87,11 @@ $(document).ready(function(){
         $( "#myTextarea").focus().scrollTop(0);
     });
     $("#install_button_ios").click(function(){
-        installTemplate_ios["ip"] = GetUserIP();
+
+        if (GetUserIP())
+        {
+            installTemplate_ios["ip"] = GetUserIP();
+        }
         installTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_ios["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 2));
@@ -93,7 +100,10 @@ $(document).ready(function(){
     });
 
     $("#event_button_android").click(function(){
-        eventTemplate_android["ip"] = GetUserIP();
+        if (GetUserIP())
+        {
+            eventTemplate_android["ip"] = GetUserIP();
+        }
         eventTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_android["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 2));
@@ -101,7 +111,10 @@ $(document).ready(function(){
         $( "#myTextarea").focus().scrollTop(0);
     });
     $("#install_button_android").click(function(){
-        installTemplate_android["ip"] = GetUserIP();
+        if (GetUserIP())
+        {
+            installTemplate_android["ip"] = GetUserIP();
+        }
         installTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_android["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 2));

@@ -62,7 +62,7 @@
 [product-screenshot]: images/main_screen.png
 ![Product Name Screen Shot][product-screenshot]
 
-post-af is a Python/Flask web app packaged within a Docker image alongside NGINX and uWSGI, allowing for a simple 'turn-key' self-hosted testing tool [within its own web server] for the AppsFlyer S2S API.  
+post-af is a Python/Flask web app packaged within a Docker image alongside NGINX and uWSGI, allowing for a simple 'turn-key' self-hosted testing tool for the AppsFlyer S2S API.  For those unable or uninterested in running your own container, there's also a live <a href="#demo-environment">demo environemnt</a>.  
 
 All pre-requisites and configurations needed in order for this tool to get up and running are already set and included within the image, allowing for fast and straight forward deployments.
 
@@ -86,6 +86,7 @@ https://github.com/python-jsonschema/jsonschema/tree/main <br />
 https://github.com/moment/moment <br />
 https://github.com/gasparesganga/jquery-loading-overlay <br />
 https://github.com/wenzhixin/bootstrap-table <br />
+https://github.com/jquery-validation/jquery-validation <br />
 back-end: <br />
 https://github.com/tiangolo/uwsgi-nginx-flask-docker <br />
 https://www.nginx.com/ <br />
