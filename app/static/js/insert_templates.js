@@ -3,7 +3,7 @@ $(document).ready(function(){
     function GetUserIP(){
         var ret_ip;
         $.ajaxSetup({async: false});
-        $.get('http://jsonip.com/', function(r){ 
+        $.get('https://jsonip.com/', function(r){ 
             ret_ip = r.ip; 
         });
         return ret_ip;
