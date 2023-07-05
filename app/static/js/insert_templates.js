@@ -82,7 +82,7 @@ $(document).ready(function(){
         }
         eventTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_ios["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
-        $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 2));
+        $("#myTextarea").val(JSON.stringify(eventTemplate_ios, null, 3));
         $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
         $( "#myTextarea").focus().scrollTop(0);
     });
@@ -94,7 +94,7 @@ $(document).ready(function(){
         }
         installTemplate_ios["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_ios["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
-        $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 2));
+        $("#myTextarea").val(JSON.stringify(installTemplate_ios, null, 3));
         $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
         $( "#myTextarea").focus().scrollTop(0);
     });
@@ -106,7 +106,7 @@ $(document).ready(function(){
         }
         eventTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         eventTemplate_android["inst_date"] = moment.utc().subtract(15, 'hours').format("YYYY-MM-DDTHH:mm:ss.SSS");
-        $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 2));
+        $("#myTextarea").val(JSON.stringify(eventTemplate_android, null, 3));
         $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
         $( "#myTextarea").focus().scrollTop(0);
     });
@@ -117,7 +117,7 @@ $(document).ready(function(){
         }
         installTemplate_android["timestamp"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
         installTemplate_android["inst_date"] = moment.utc().format("YYYY-MM-DDTHH:mm:ss.SSS");
-        $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 2));
+        $("#myTextarea").val(JSON.stringify(installTemplate_android, null, 3));
         $( "#myTextarea" ).effect( "highlight", {color: '#f8f5f0'} );
         $( "#myTextarea").focus().scrollTop(0);
     });
@@ -145,5 +145,34 @@ $(document).ready(function(){
             }
         },
     });
+
+    // Here, you can expect to have as the last parameter the boostrap-table object
+/** 
+    $('#table').on('click-cell.bs.table', function (field, value, row, $el) {
+        if (value !="type"){
+            $('#rowmodalbody').html($('<b> Code from row: ' + row + '</b>'));
+            $("#rowModal").modal('show');
+          // alert($el.id+"-"+$el.name+"-"+$el.type);
+     }
+   });
+*/
+
+$('#table').on('click-row.bs.table', function (e, row, $element) {
+
+    //$('#orderDetails').html($('<b> ' + $(this).data('id') + '</b>'));
+    $('#rowmodalbody_url').html($('<small>' + row.url_string + '</small>'));
+    $('#rowmodalbody_headers').html($('<pre class="my-0"><code class="text-wrap">' + row.headers + '</code></pre>'));
+    $('#rowmodalbody_payload').html($('<pre class="my-0"><code>' + row.payload + '</code></pre>'));
+    $('#rowmodalbody_codemsg').html($('<strong>' + row.code + ' - ' + row.reason + '</strong>'));
+
+    //code reason
+    //$('#exampleModalLabel').html($(row.code + ' - ' + row.reason));
+    // 
+    $("#rowModal").modal('show');
+    
+});
+
+    $('#table tbody').css('cursor', 'pointer');
+    
 });
 

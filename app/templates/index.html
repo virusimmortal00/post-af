@@ -93,6 +93,9 @@
 						<th data-field="reason">msg</th>
 						<th data-field="app_id">app</th>
 						<th data-field="payload_type">type</th>
+						<th data-field="headers" class="noshow">headers</th>
+						<th data-field="url_string" class="noshow">headers</th>
+						<th data-field="payload" class="noshow">headers</th>
 					</tr>
 				</thead>
 				{% for row in rows %}
@@ -108,9 +111,13 @@
 						{{row["code"]}}
 						</td>
 						<td>{{row["reason"]}}</td>
-						<td><sub>{{row["app_id"]}}</sub></td>
-						<td><sub>{{row["payload_type"]}}</sub></td>
-						</small>
+						<sub>
+							<td>{{row["app_id"]}}</td>
+							<td>{{row["payload_type"]}}</td>
+						</sub></small>
+						<td class = "noshow">{{row["headers"]}}</td>
+						<td class = "noshow">{{row["url_string"]}}</td>
+						<td class = "noshow">{{row["payload"]}}</td>
 					</tr>
 				{% endfor %}
 			</table>
@@ -141,28 +148,56 @@
   </div>
 </div>
 
-<!--
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-	Launch static backdrop modal
-  </button>
-  
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal fade modal-xl" id="rowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+		  <div class="modal-title" id="exampleModalLabel">
+			<strong><div id='rowmodalbody_url' class="text-center text-secondary"></div></strong>
+		  </div>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
-		<div class="modal-body">
-		  ...
+		<div id='rowmodalbody' class="modal-body">
+			<div class="row">
+				<div class="col-3">
+					<div role="tabpanel">
+						<!-- List group -->
+						<div id='rowmodalbody_codemsg' class="text-center mb-2 fs-4"'></div>
+						<div class="list-group text-center" id="myList" role="tablist">
+							<a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-headers" role="tab" aria-controls="headers">headers</a>
+							<a class="list-group-item list-group-item-action active" id="list-messages-list" data-bs-toggle="list" href="#list-payload" role="tab" aria-controls="payload">body</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-9">
+				<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane" id="list-headers" role="tabpanel" aria-labelledby="list-headers-list"><div id='rowmodalbody_headers'></div></div>
+						<div class="tab-pane show active" id="list-payload" role="tabpanel" aria-labelledby="list-payload-list"><div id='rowmodalbody_payload'></div></div>
+					</div>
+				</div>
+			</div>
+
+
+<!--
+			<div class="row">
+				<div class="col-4">
+				  <div class="list-group" id="list-tab" role="tablist">
+				  </div>
+				</div>
+				<div class="col-8">
+				  <div class="tab-content" id="nav-tabContent">
+				  </div>
+				</div>
+			  </div>
+-->
+
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Understood</button>
 		</div>
 	  </div>
 	</div>
   </div>
--->
 
 {% endblock %}
