@@ -216,10 +216,16 @@ All templates, once inserted, can be manually configured before posting - so fee
 ## POST History
 
 <div align="center">
-  <img src="images/history.png" alt="templates" width="50%">
+  <img src="images/history_v2.png" alt="templates" width="50%">
 </div>
 
 On the right side of the app you'll see your POST history, pulled from a local sqlite db created when the container is first created.  As long as you don't delete this container, your history will be saved and will continue to be accesible.
+
+<div align="center">
+  <img src="images/history_more.png" alt="templates" width="50%">
+</div>
+
+Clicking on a post entry will bring up additional information about the post in question (allowing for you to copy/paste body contents for re-use).
 
 I've toyed with the idea of adding an option to save out your history to local file - but haven't quite become convinced its worth it - so for now, your history lives and dies with your container.
 
