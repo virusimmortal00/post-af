@@ -8,29 +8,29 @@
 {% endblock %}
 {% block content %}
 <div class="container-fluid full-height">
-	<nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse flex-row-reverse" id="navbarColor03">
-				<form class="d-flex">
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github fa-2x"></i></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker fa-2x"></i></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
-						</li>
-					</ul>
-				  </form>
-			</div>
-		</div>
-	</nav>
+	 <nav class="navbar py-1 navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><i class="fa-solid fa-book-skull"></i> post-af</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarColor03">
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-github fa-2x"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://hub.docker.com/r/virusimmortal00/post-af" target="_blank"><i class="fa-brands fa-docker fa-2x"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.linkedin.com/in/bobby-sayers/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
 	<div class ="d-flex flex-row mt-2 justify-content-center full-height">
 		<div class="col-6 gx-8 px-2">
 			<form method="post" action="/" enctype="multipart/form-data" class="form-control form-control-sm h-100 d-flex justify-content-between flex-column">
@@ -83,6 +83,8 @@
 				data-sort-order="desc"
 				data-pagination-parts="['pageList']"
 				data-pagination-h-align="left"
+				data-search="true"
+  				data-search-highlight="true"
 				>
 				
 				<thead class="text-center text-muted">
@@ -150,11 +152,24 @@
 <div class="modal fade modal-xl" id="rowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
-		<div class="modal-header">
-		  <div class="modal-title" id="exampleModalLabel">
-			<strong><div id='rowmodalbody_url' class="text-center text-secondary"></div></strong>
+		<div class="modal-header justify-content-end">
+		  <div class="modal-title w-100" id="exampleModalLabel">
+			<div class="d-flex flex-row">
+				<div class="flex-grow-1 ms-3">
+					<fieldset disabled="">
+						<input class="form-control" id="disabledInputURL" type="text" value="test" disabled="">
+					</fieldset>
+				</div>
+				<!--
+				<div class="d-inline-flex">
+					<button class="btn btn-light btn-sm" type="button" data-clipboard-target="#rowmodalbody_url"><i class="fa-solid fa-copy"></i></button>
+				</div>
+				-->
+				<div class="d-inline-flex ms-5">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
 		  </div>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div id='rowmodalbody' class="modal-body" style="overflow-x: hidden;
 		overflow-y: auto;">
@@ -177,20 +192,6 @@
 					</div>
 				</div>
 			</div>
-
-
-<!--
-			<div class="row">
-				<div class="col-4">
-				  <div class="list-group" id="list-tab" role="tablist">
-				  </div>
-				</div>
-				<div class="col-8">
-				  <div class="tab-content" id="nav-tabContent">
-				  </div>
-				</div>
-			  </div>
--->
 
 		</div>
 		<div class="modal-footer">

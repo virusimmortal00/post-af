@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    new ClipboardJS('.btn');
+
     function GetUserIP(){
         var ret_ip;
         $.ajaxSetup({async: false});
@@ -160,7 +162,7 @@ $(document).ready(function(){
 $('#table').on('click-row.bs.table', function (e, row, $element) {
 
     //$('#orderDetails').html($('<b> ' + $(this).data('id') + '</b>'));
-    $('#rowmodalbody_url').html($('<small>' + row.url_string + '</small>'));
+    $('#disabledInputURL').val(row.url_string);
     $('#rowmodalbody_headers').html($('<pre class="my-0"><code class="text-wrap">' + row.headers + '</code></pre>'));
     $('#rowmodalbody_payload').html($('<pre class="my-0"><code>' + row.payload + '</code></pre>'));
     $('#rowmodalbody_codemsg').html($('<strong>' + row.code + ' - ' + row.reason + '</strong>'));
