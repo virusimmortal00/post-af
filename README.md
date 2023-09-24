@@ -62,7 +62,7 @@
 [product-screenshot]: images/main_screen.png
 ![Product Name Screen Shot][product-screenshot]
 
-post-af is a Python/Flask web app packaged within a Docker image alongside NGINX and uWSGI, allowing for a simple 'turn-key' self-hosted testing tool for the AppsFlyer S2S API.  For those unable or uninterested in running your own container, there's also a live <a href="#demo-environment">demo environemnt</a>.  
+post-af is a Python/Flask web app packaged within a Docker image alongside NGINX and uWSGI, allowing for a simple 'turn-key' self-hosted testing tool for the AppsFlyer S2S API. 
 
 All pre-requisites and configurations needed in order for this tool to get up and running are already set and included within the image, allowing for fast and straight forward deployments.
 
@@ -98,18 +98,6 @@ https://github.com/FortAwesome/Font-Awesome <br />
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-### Demo Environment
-
-This project was designed for use mainly as a grab+go image/container, deployed via Docker.  For some, the idea of injecting Docker into their lives might be a bit much - so, for the sake of convenience, I'm also currently hosting a demo version of the app at:
-
-https://postaf.sayers.io/
-
-Although there are limitations within the demo in regards to post history (as the database wasn't designed for multiple users, and so it would be unwise for everyone's data to be visible to anyone), it's still fully functional for sending API posts.
-
-Perhaps in the future there will be no need to locally host your own container, but for now, that's the best route.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Docker Instructions
 
